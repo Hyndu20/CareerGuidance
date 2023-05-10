@@ -174,3 +174,25 @@ export const AllExperts = async () => {
     console.error(error);
   }
 };
+
+
+//display Experts
+export const GetSkills = async () => {
+  const token = localStorage.getItem('token_user');
+  console.log(token)
+
+  try {
+    const response = await axios.get("http://localhost:5000/user/getskills", {
+      headers: {
+        'x-access-token': token
+      }
+    });
+
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+

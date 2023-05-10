@@ -9,6 +9,7 @@ import WeGuide from './pages/weGuide';
 import AdminDashboard from './components/AdminDashboard'
 import UserDashboard from './components/UserDashboard'
 import AdminSlidebarActions from './components/AdminSlidebarActions';
+import Recommendedroute from './pages/Recommend';
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
         {/*Admin routes*/}
         <Route path="/adminlogin" element={<AdminLogin />}/>
         <Route path="/adminDashboard" element={<AdminDashboard />}/>
-        {/*<Route path="/displayusers" element={<AdminSlidebarActions />}/>*/}
+        <Route path="/recommend" element={<Recommendedroute />}/>
         <Route path="/admin/addRoadmap" element={<RoadmapForm />} />
         <Route path="/myRoadmap" element={<ShowRoadmap />} />
         <Route path="/weGuide" element={<WeGuide />} />

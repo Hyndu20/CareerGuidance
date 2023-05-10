@@ -93,42 +93,53 @@ const updateUserById = async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
   };
-  
-//getcoursebyname
-const findUserWithMostSkills = async (req, res) => {
-  const { skills } = req.body;
+
+//getallusers
+const displaySkill = async (req, res) => {
   try {
-    const users = await Skill.find();
-    let maxMatchedSkillsCount = 0;
-    let userWithMostMatchedSkills = null;
-
-    for (const skil of users) {
-      let matchedSkillsCount = 0;
-      for (const skils of Skill.skills) {
-        if (skills.includes(skil)) {
-          matchedSkillsCount++;
-        }
-      }
-      if (matchedSkillsCount > maxMatchedSkillsCount) {
-        maxMatchedSkillsCount = matchedSkillsCount;
-        userWithMostMatchedSkills = skil;
-      }
-    }
-
-    if (!userWithMostMatchedSkills) {
-      return res.status(404).json({ message: 'No user found with matching skills' });
-    }
-
-    return res.json(userWithMostMatchedSkills);
+    const skil = await skill.find();
+    return res.json(skil);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'Server error' });
   }
 };
 
+
   
+//getcoursebyname
+// const findUserWithMostSkills = async (req, res) => {
+//   const { skills } = req.body;
+//   try {
+//     const users = await Skill.find();
+//     let maxMatchedSkillsCount = 0;
+//     let userWithMostMatchedSkills = null;
 
+//     for (const skil of users) {
+//       let matchedSkillsCount = 0;
+//       for (const skils of Skill.skills) {
+//         if (skills.includes(skil)) {
+//           matchedSkillsCount++;
+//         }
+//       }
+//       if (matchedSkillsCount > maxMatchedSkillsCount) {
+//         maxMatchedSkillsCount = matchedSkillsCount;
+//         userWithMostMatchedSkills = skil;
+//       }
+//     }
 
+//     if (!userWithMostMatchedSkills) {
+//       return res.status(404).json({ message: 'No user found with matching skills' });
+//     }
+
+//     return res.json(userWithMostMatchedSkills);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ message: 'Server error' });
+//   }
+// };
+
+  
 module.exports = {
-    createUser, login, userbyId, updateUserById, findUserWithMostSkills
+    createUser, login, userbyId, updateUserById, displaySkill
 }

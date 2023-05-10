@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 })
 app.use(cors());
 app.use(cors({
-    origin: ['http://localhost:5000/', 'http://localhost:3001/']
+    origin: ['http://localhost:5000/', 'http://localhost:3000/']
   }));
 
 //routes

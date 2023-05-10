@@ -5,15 +5,16 @@ import Assesment from '../components/Assessment/Assesment';
 // import MyAssessment from './MyAssessment';
 import Profile from '../components/ProVersion/Profile';
 import ShowRoadmap from '../components/Roadmaps/RoadmapTemplate';
+import Recommendedroute from './Recommend';
 
 const WeGuide = () => {
     const [loginauth, setLoginauth] = useState(true)
-    const [active, setActive] = useState("profile");
+    const [active, setActive] = useState("");
     const navigate = useNavigate()
 
-    useEffect(() => {
-        callUserPage()
-    }, [])
+    // useEffect(() => {
+    //     callUserPage()
+    // }, [])
     const HandleLogout = () => {
         
         localStorage.removeItem('token');
@@ -27,30 +28,33 @@ const WeGuide = () => {
 
     
 
-    const callUserPage = async () => {
-        try {
-            const res = await fetch('/user', {
-                method: "GET",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
-                },
-                credentials: "include"
-            })
+    // const callUserPage = async () => {
+    //     try {
+    //         const res = await fetch('/user', {
+    //             method: "GET",
+    //             headers: {
+    //                 Accept: "application/json",
+    //                 "Content-Type": "application/json"
+    //             },
+    //             credentials: "include"
+    //         })
 
-            const data = await res.json();
-            console.log(data)
+    //         const data = await res.json();
+    //         console.log(data)
 
-            if (!res.status === 200) {
-                const error = new Error(res.error)
-                throw error
-            }
-        } catch (err) {
-            console.log(err)
-            // navigate('/login')
-        }
-    }
+    //         if (!res.status === 200) {
+    //             const error = new Error(res.error)
+    //             throw error
+    //         }
+    //     } catch (err) {
+    //         console.log(err)
+    //         // navigate('/login')
+    //     }
+    // }
+    
 
+            console.log(active);
+    
    
 
    
@@ -71,7 +75,7 @@ const WeGuide = () => {
                     <ul class="space-y-2 tracking-wide mt-8">
 
                         <li>
-                            <button onClick={() => setActive("profile")} className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                            <button onClick={() => setActive("profile") } className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path class="fill-current text-gray-300 group-hover:text-cyan-300" fill-rule="evenodd" d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z" clip-rule="evenodd" />
                                     <path class="fill-current text-gray-600 group-hover:text-cyan-600" d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
@@ -80,34 +84,7 @@ const WeGuide = () => {
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setActive("academic")} href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
-                                    <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
-                                </svg>
-                                <span class="group-hover:text-gray-700">Academic Details</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => setActive("assessment")} href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path class="fill-current text-gray-600 group-hover:text-cyan-600" d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                                    <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-                                </svg>
-                                <a href='myassessment' class="group-hover:text-gray-700">My Assesment</a>
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => setActive("quiz")} href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
-                                    <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="group-hover:text-gray-700">Attempt Quiz</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                            <button onClick={() => setActive("recommend")} className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
                                     <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
@@ -115,15 +92,7 @@ const WeGuide = () => {
                                 <span class="group-hover:text-gray-700">My Plan</span>
                             </button>
                         </li>
-                        <li>
-                            <button onClick={() => setActive("report")} href="" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
-                                    <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
-                                </svg>
-                                <a href='myreport' class="group-hover:text-gray-700">My Report</a>
-                            </button>
-                        </li>
+                       
                     </ul>
                 </div>
 
@@ -148,11 +117,14 @@ const WeGuide = () => {
                         
                     </div>
                 </div>
-                <div className="px-6 pt-6 2xl:container">
-                        <ShowRoadmap />
-                    </div>
-
-
+               
+               {active === "recommend" &&
+                     <div className="px-6 pt-6 2xl:container">
+                         <Recommendedroute />
+                     </div>
+                    // navigate('/recommend')
+                }
+                
                
             </div>
         </div>
