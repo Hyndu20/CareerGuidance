@@ -5,7 +5,7 @@ const { authenticate } = require('../middlewares/adminauth')
 const { login, addSkill, displaySkill, deleteSkill, displayExpert } = require('../controllers/adminController')
 const { allUsers,  createAdmin, deleteUser,  addExpert, deleteExpert } = require('../controllers/adminController')
 
-//post a new workout
+
 router.post('/addadmin', createAdmin)
 router.post('/login', login)
 router.get('/getallusers', authenticate, allUsers)
