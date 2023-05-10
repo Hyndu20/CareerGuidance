@@ -1,20 +1,13 @@
-import { Card } from '@material-tailwind/react';
-import React, { useEffect, useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
-import Assesment from '../components/Assessment/Assesment';
-// import MyAssessment from './MyAssessment';
-import Profile from '../components/ProVersion/Profile';
-import ShowRoadmap from '../components/Roadmaps/RoadmapTemplate';
+import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import Recommendedroute from './Recommend';
 
 const WeGuide = () => {
     const [loginauth, setLoginauth] = useState(true)
     const [active, setActive] = useState("");
-    const navigate = useNavigate()
+    
 
-    // useEffect(() => {
-    //     callUserPage()
-    // }, [])
+    
     const HandleLogout = () => {
         
         localStorage.removeItem('token');
@@ -25,40 +18,9 @@ const WeGuide = () => {
 
     if(!loginauth)
     {return <Navigate to='/' />}
-
     
-
-    // const callUserPage = async () => {
-    //     try {
-    //         const res = await fetch('/user', {
-    //             method: "GET",
-    //             headers: {
-    //                 Accept: "application/json",
-    //                 "Content-Type": "application/json"
-    //             },
-    //             credentials: "include"
-    //         })
-
-    //         const data = await res.json();
-    //         console.log(data)
-
-    //         if (!res.status === 200) {
-    //             const error = new Error(res.error)
-    //             throw error
-    //         }
-    //     } catch (err) {
-    //         console.log(err)
-    //         // navigate('/login')
-    //     }
-    // }
     
-
-            console.log(active);
-    
-   
-
-   
-    return (
+   return (
         <div>
             <aside class="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-gray transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
                 <div>
@@ -132,5 +94,6 @@ const WeGuide = () => {
 
     )
 }
+
 
 export default WeGuide
