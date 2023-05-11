@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: sunandani/frontend:latest
+    container_name: frontend
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    networks:
+      - my_network
+
+  backend:
+    image: sunandani/backend:latest
+    container_name: backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI="mongodb+srv://test:test@cluster0.l69p7lc.mongodb.net/?retryWrites=true&w=majority"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+
+      
